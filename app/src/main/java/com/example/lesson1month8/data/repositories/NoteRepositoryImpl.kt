@@ -34,9 +34,7 @@ class NoteRepositoryImpl @Inject constructor(
         return flow {
             emit(Resource.Loading())
             try {
-                val dataEntity = noteDao.getAllNotes()
-                val transform: (NoteEntity) -> Note = {it.toNote()}
-                val data = dataEntity.map(transform)
+                val data = noteDao.getAllNotes().map { it.toNote() }
                 emit(Resource.Success(data))
             } catch (e: Exception) {
                 emit(Resource.Error(e.localizedMessage ?: "unknown error"))
