@@ -5,15 +5,17 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import com.example.lesson1month8.domain.model.Note
+import com.example.lesson1month8.domain.utils.Resource
+import kotlinx.coroutines.flow.Flow
 
 interface NoteRepository {
 
-     fun createNote(noteEntity: Note)
+     fun createNote(note: Note): Flow<Resource<Unit>>
 
-     fun getAllNote(): List<Note>
+     fun getAllNote(): Flow<Resource<List<Note>>>
 
-     fun editNote(noteEntity: Note)
+     fun editNote(note: Note): Flow<Resource<Unit>>
 
-     fun removeNote(noteEntity: Note)
+     fun removeNote(note: Note): Flow<Resource<Unit>>
 
 }
