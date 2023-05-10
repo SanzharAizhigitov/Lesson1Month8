@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".presentation.ui.fragments.create_edit.CreateEditFragment">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:hint="title"
+        android:id="@+id/title_et"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:hint="desc"
+        android:id="@+id/desc_et"
+        android:layout_marginTop="30dp"
+
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="CREATE|EDIT"
+        android:textSize="48sp"
+        android:id="@+id/create_edit_btn"
+/>
+</LinearLayout>

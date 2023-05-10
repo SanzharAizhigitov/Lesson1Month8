@@ -1,4 +1,4 @@
-package com.example.lesson1month8.presentation
+package com.example.lesson1month8.presentation.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
