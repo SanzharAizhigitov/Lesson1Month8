@@ -11,6 +11,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
+import com.example.lesson1month8.data.mappers.toEntity
 import com.example.lesson1month8.databinding.FragmentCreateEditBinding
 import com.example.lesson1month8.domain.model.Note
 import com.example.lesson1month8.presentation.base.BaseFragment
@@ -39,39 +41,42 @@ class CreateEditFragment : BaseFragment() {
         initClickers()
     }
 
-    private fun initClickers() {
+    override fun initClickers() {
         binding.createEditBtn.setOnClickListener {
-            val random = Random().nextInt(2)
-            if (random == 0) {
+            if (arguments?.getInt("id") != null) {
+                var note = arguments?.getSerializable("note") as Note
+                note.title = binding.titleEt.text.toString()
+                note.desc = binding.descEt.text.toString()
+                editNote(note = note)
+                findNavController().navigateUp()
+            } else {
                 createNote(
                     Note(
                         title = binding.titleEt.text.toString(),
                         desc = binding.descEt.text.toString()
                     )
                 )
-            } else {
-                //editNote()
-                //Нет данных на что заменять, крч это надо весь код ворошить
             }
         }
     }
 
-    private fun createNote(note: Note) {
-        viewModel.createNote(note)
-        viewModel.createNoteState.collectState(state = {state->
-           // binding.progressBar.isVisible = state is UIState.Loading
-        }, onSuccess = { data ->
-            //adapter.addList(data)
-        })
-    }
 
-    private fun editNote(note: Note) {
-        viewModel.editNote(note)
-        viewModel.editNoteState.collectState(state = {state->
-           // binding.progressBar.isVisible = state is UIState.Loading
-        }, onSuccess = { data ->
-            //adapter.addList(data)
-        })
-    }
+private fun createNote(note: Note) {
+    viewModel.createNote(note)
+    viewModel.createNoteState.collectState(state = { state ->
+         binding.progressBar.isVisible = state is UIState.Loading
+    }, onSuccess = {
+
+    })
+}
+
+private fun editNote(note: Note) {
+    viewModel.editNote(note)
+    viewModel.editNoteState.collectState(state = { state ->
+        // binding.progressBar.isVisible = state is UIState.Loading
+    }, onSuccess = { data ->
+        //adapter.addList(data)
+    })
+}
 
 }

@@ -5,7 +5,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".presentation.ui.fragments.create_edit.CreateEditFragment">
-
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progress_bar"
+        android:layout_width="400dp"
+        android:indeterminate="true"
+        android:layout_height="400dp"
+        android:indeterminateTint="@color/red"
+        />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -24,6 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:text="CREATE|EDIT"
+        android:backgroundTint="@color/red"
         android:textSize="48sp"
         android:id="@+id/create_edit_btn"
 />

@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_greph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_greph"
+    app:startDestination="@id/createEditFragment">
 
+    <fragment
+        android:id="@+id/createEditFragment"
+        android:name="com.example.lesson1month8.presentation.ui.fragments.create_edit.CreateEditFragment"
+        android:label="fragment_create_edit"
+        tools:layout="@layout/fragment_create_edit" />
+    <fragment
+        android:id="@+id/listOfNoteFragment"
+        android:name="com.example.lesson1month8.presentation.ui.fragments.list_of_note.ListOfNoteFragment"
+        android:label="fragment_list_of_note"
+        tools:layout="@layout/fragment_list_of_note" />
 </navigation>
