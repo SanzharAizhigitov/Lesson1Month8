@@ -1,3 +1,5 @@
+import org.gradle.api.JavaVersion
+
 object AppConfig {
     const val compileSdk = 33
     const val minSdk = 24
@@ -6,4 +8,7 @@ object AppConfig {
     const val versionName = "1.0"
     const val TestInstrumentation = "androidx.test.runner.AndroidJUnitRunner"
     const val jvmTarget =  "1.8"
+    const val namespace =  "com.example.lesson1month8"
+    const val applicationId =  "com.example.lesson1month8"
+    val compatibility =  JavaVersion.VERSION_1_8
 }

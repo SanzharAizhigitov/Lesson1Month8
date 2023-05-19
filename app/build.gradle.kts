@@ -6,10 +6,10 @@ plugins {
 }
 
 android {
-    namespace = "com.example.lesson1month8"
+    namespace = AppConfig.namespace
     compileSdk = AppConfig.compileSdk
    defaultConfig {
-        applicationId = "com.example.lesson1month8"
+        applicationId = AppConfig.applicationId
         minSdk = AppConfig.minSdk
         targetSdk = AppConfig.targetSdk
         versionCode = AppConfig.versionCode
@@ -25,8 +25,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = AppConfig.compatibility
+        targetCompatibility = AppConfig.compatibility
     }
     kotlinOptions {
         jvmTarget = AppConfig.jvmTarget
