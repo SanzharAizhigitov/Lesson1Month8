@@ -5,7 +5,6 @@ import androidx.room.Room
 import com.example.lesson1month8.data.local.NoteDao
 import com.example.lesson1month8.data.local.NoteDataBase
 import com.example.lesson1month8.data.repositories.NoteRepositoryImpl
-import com.example.lesson1month8.domain.repositories.NoteRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,7 +30,7 @@ object NoteModule {
     fun provideNoteDao(noteDataBase: NoteDataBase) = noteDataBase.noteDao()
 
     @Provides
-    fun provideNoteRepository(noteDao: NoteDao) : NoteRepository{
+    fun provideNoteRepository(noteDao: NoteDao) : com.example.lesson1month8.domain.repositories.NoteRepository {
         return NoteRepositoryImpl(noteDao)
     }
 

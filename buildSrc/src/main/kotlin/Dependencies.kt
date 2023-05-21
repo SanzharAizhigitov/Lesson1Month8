@@ -21,21 +21,23 @@ object Deps {
     object Room {
         const val runtime = "androidx.room:room-runtime:${Versions.room}"
         const val compiler ="androidx.room:room-compiler:${Versions.room}"
-        const val ktx = "androidx.room:room-ktx:${Versions.room}"
+        const val room = "androidx.room:room-ktx:${Versions.room}"
     }
     object DaggerHilt{
         const val android = "com.google.dagger:hilt-android:${Versions.hilt}"
         const val core ="com.google.dagger:hilt-core:${Versions.hilt}"
         const val compiler = "com.google.dagger:hilt-compiler:${Versions.hilt}"
     }
+    object Test{
+        const val junit = "junit:junit:${Versions.jUnit}"
+        const val extJunit = "androidx.test.ext:junit:${Versions.extJUnit}"
+        const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
+    }
     object Ui{
         const val core = "androidx.core:core-ktx:${Versions.androidCore}"
         const val appcompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
         const val material = "com.google.android.material:material:${Versions.material}"
         const val constraint = "androidx.constraintlayout:constraintlayout:${Versions.constraint}"
-        const val junit = "junit:junit:${Versions.jUnit}"
-        const val extJunit = "androidx.test.ext:junit:${Versions.extJUnit}"
-        const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
         const val fragment = "androidx.fragment:fragment-ktx:${Versions.fragment}"
     }
     object Coroutines {
@@ -50,9 +52,15 @@ object Deps {
         const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
         const val runtime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
     }
+    object JavaX{
+        const val inject ="javax.inject:javax.inject:1"
+    }
 }
 
 object Plugins {
+    object Java{
+        const val library = "java-library"
+    }
     object AGP {
         const val application = "com.android.application"
         const val library = "com.android.library"
@@ -61,6 +69,7 @@ object Plugins {
     object Kotlin {
         const val android = "org.jetbrains.kotlin.android"
         const val kapt = "kotlin-kapt"
+        const val jvm = "org.jetbrains.kotlin.jvm"
     }
 
     object DaggerHilt {

@@ -46,7 +46,7 @@ findNavController().navigate(R.id.createEditFragment)
          }
     }
 
-    fun editClick(note: Note, id: Int){
+    fun editClick(note: com.example.lesson1month8.domain.model.Note, id: Int){
         findNavController().navigate(R.id.createEditFragment, bundleOf(
             "note" to note,
             "id" to id
@@ -62,7 +62,7 @@ findNavController().navigate(R.id.createEditFragment)
         })
     }
 
-    private fun removeNote(note: Note, id: Int) {
+    private fun removeNote(note: com.example.lesson1month8.domain.model.Note, id: Int) {
         viewModel.removeNote(note)
         viewModel.removeNoteState.collectState(state = {state->
             binding.progressBar.isVisible = state is UIState.Loading
