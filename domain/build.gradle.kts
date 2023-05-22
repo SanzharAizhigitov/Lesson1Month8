@@ -11,6 +11,7 @@ java {
     targetCompatibility = AppConfig.compatibility
 }
 
+
 dependencies{
     //Inject
     implementation(Deps.JavaX.inject)

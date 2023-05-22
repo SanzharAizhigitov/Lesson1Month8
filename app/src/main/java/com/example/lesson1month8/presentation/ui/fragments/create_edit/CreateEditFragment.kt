@@ -51,11 +51,12 @@ class CreateEditFragment : BaseFragment() {
                 findNavController().navigateUp()
             } else {
                 createNote(
-                    com.example.lesson1month8.domain.model.Note(
+                    Note(
                         title = binding.titleEt.text.toString(),
                         desc = binding.descEt.text.toString()
                     )
                 )
+                findNavController().navigateUp()
             }
         }
     }
@@ -70,12 +71,12 @@ private fun createNote(note: com.example.lesson1month8.domain.model.Note) {
     })
 }
 
-private fun editNote(note: com.example.lesson1month8.domain.model.Note) {
+private fun editNote(note: Note) {
     viewModel.editNote(note)
     viewModel.editNoteState.collectState(state = { state ->
-        // binding.progressBar.isVisible = state is UIState.Loading
+         binding.progressBar.isVisible = state is UIState.Loading
     }, onSuccess = { data ->
-        //adapter.addList(data)
+
     })
 }
 

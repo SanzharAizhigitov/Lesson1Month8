@@ -14,6 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Lesson1Month8"
 include(":app")
-include(":trash")
 include(":data")
 include(":domain")

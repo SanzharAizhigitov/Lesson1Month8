@@ -4,24 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.example.lesson1month8.R
 import com.example.lesson1month8.databinding.FragmentListOfNoteBinding
-import com.example.lesson1month8.domain.model.Note
 import com.example.lesson1month8.presentation.base.BaseFragment
 import com.example.lesson1month8.presentation.ui.fragments.list_of_note.adapter.ListOfNoteAdapter
 import com.example.lesson1month8.presentation.ui.utils.UIState
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
+@Suppress("UNREACHABLE_CODE")
 @AndroidEntryPoint
 class ListOfNoteFragment : BaseFragment() {
     private lateinit var binding: FragmentListOfNoteBinding
@@ -31,19 +25,20 @@ class ListOfNoteFragment : BaseFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentListOfNoteBinding.inflate(inflater, container, false)
         return binding.root
         adapter = ListOfNoteAdapter(this::removeNote, this::editClick)
         binding.noteRv.adapter = adapter
+        loadView()
     }
 
 
 
-   override fun initClickers() {
-         binding.addFab.setOnClickListener {
-findNavController().navigate(R.id.createEditFragment)
-         }
+    override fun initClickers() {
+        binding.addFab.setOnClickListener {
+            findNavController().navigate(R.id.createEditFragment)
+        }
     }
 
     fun editClick(note: com.example.lesson1month8.domain.model.Note, id: Int){
@@ -58,6 +53,9 @@ findNavController().navigate(R.id.createEditFragment)
         viewModel.getAllNoteState.collectState(state = {state->
             binding.progressBar.isVisible = state is UIState.Loading
         }, onSuccess = { data ->
+            adapter = ListOfNoteAdapter(this::removeNote, this::editClick)
+            binding.noteRv.adapter = adapter
+            binding.progressBar.visibility = View.GONE
             adapter.addNotes(data)
         })
     }
